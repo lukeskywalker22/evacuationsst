@@ -25,8 +25,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final List<String> locations = [
     "Multi-purpose Hall (MPH)",
-    "Auditorium",
     "Indoor Sports Hall (ISH)",
+    "Auditorium",
     "Info Hub",
     "Staff room",
     "Robotics Room",
@@ -51,7 +51,9 @@ class _HomePageState extends State<HomePage> {
     "",
   ];
 
-  final List<String> videos = ["mph.mov"];
+  final List<String> videos = [
+    "mph.mov",
+  ];
 
   List<String> filteredLocations = [];
 
@@ -195,43 +197,51 @@ Anamalai Palaniappan""",
                       )
                     : ListView.builder(
                         itemCount: filteredLocations.length,
-                        itemBuilder: (context, index) => Card(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                CupertinoPageRoute(
-                                  builder: (context) {
-                                    return EvacuationPage(
-                                      token: locations[index],
-                                      filename: videos[index],
-                                    );
-                                  },
-                                ),
-                              );
-                            },
-                            child: Padding(
-                              padding: EdgeInsets.all(20),
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Image.asset(
-                                      "assets/images/${imageheaders[index]}",
-                                      height: 175,
+                        itemBuilder: (context, index) {
+                          if (imageheaders[index] != "") {
+                            return Card(
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    CupertinoPageRoute(
+                                      builder: (context) {
+                                        return EvacuationPage(
+                                          token: locations[index],
+                                          filename: videos[index],
+                                        );
+                                      },
                                     ),
+                                  );
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.all(20),
+                                  child: Row(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.asset(
+                                          "assets/images/${imageheaders[index]}",
+                                          height: 175,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 30,
+                                      ),
+                                      Text(
+                                        filteredLocations[index],
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(
-                                    width: 30,
-                                  ),
-                                  Text(
-                                    filteredLocations[index],
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
+                            );
+                          } else {
+                            return SizedBox(
+                              height: 1,
+                            );
+                          }
+                        },
                       ),
               ),
               /*ListView.builder(
