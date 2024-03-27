@@ -221,15 +221,22 @@ Anamalai Palaniappan""",
                                         borderRadius: BorderRadius.circular(20),
                                         child: Image.asset(
                                           "assets/images/${imageheaders[index]}",
-                                          height: 175,
+                                          height: (MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              6),
                                         ),
                                       ),
                                       const SizedBox(
                                         width: 30,
                                       ),
-                                      Text(
-                                        filteredLocations[index],
-                                        style: TextStyle(fontSize: 20),
+                                      Flexible(
+                                        child: Text(
+                                          filteredLocations[index],
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   ),
