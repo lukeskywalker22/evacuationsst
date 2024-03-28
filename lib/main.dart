@@ -137,15 +137,6 @@ Anamalai Palaniappan""",
         ),
       ),
       appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.red, Colors.redAccent],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
         leading: IconButton(
           onPressed: () {
             _key.currentState?.openDrawer();
