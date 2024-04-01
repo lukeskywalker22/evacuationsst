@@ -37,19 +37,19 @@ class _HomePageState extends State<HomePage> {
     "Learning Oasis 2 (LO2)",
   ];
 
-  final List<String> imageheaders = [
-    "mph.jpeg",
-    "ish.jpeg",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-  ];
+  var imageheaders = {
+    "Multi-purpose Hall (MPH)": "mph.jpeg",
+    "Indoor Sports Hall (ISH)": "ish.jpeg",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+  };
 
   final List<String> videos = [
     "mph.mov",
@@ -211,7 +211,7 @@ Anamalai Palaniappan""",
                                       ClipRRect(
                                         borderRadius: BorderRadius.circular(20),
                                         child: Image.asset(
-                                          "assets/images/${imageheaders[index]}",
+                                          "assets/images/${imageheaders[filteredLocations[index]]}",
                                           height: (MediaQuery.of(context)
                                                   .size
                                                   .height /
