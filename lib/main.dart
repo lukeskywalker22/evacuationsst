@@ -40,15 +40,15 @@ class _HomePageState extends State<HomePage> {
   var imageheaders = {
     "Multi-purpose Hall (MPH)": "mph.jpeg",
     "Indoor Sports Hall (ISH)": "ish.jpeg",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
-    "": "",
+    "Auditorium": "",
+    "Info Hub": "",
+    "Staff room": "",
+    "Robotics Room": "",
+    "SST Inc Room": "",
+    "Lecture Theatre (LT)": "",
+    "Seminar Room (SR)": "",
+    "Learning Oasis 1 (LO1)": "",
+    "Learning Oasis 2 (LO2)": "",
   };
 
   final List<String> videos = [
@@ -120,10 +120,9 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   """
 Luke Yeo
+Samuel Drew Teo
 Ethan Phua
-Kenzo Gabriel Sutanto
-Ayden Seah
-Anamalai Palaniappan""",
+""",
                   style: TextStyle(
                     fontSize: 18,
                   ),
