@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   """
 Luke Yeo
-Samuel Drew Teo
+Ayaan Jain
 Ethan Phua
 """,
                   style: TextStyle(
