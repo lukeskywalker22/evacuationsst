@@ -1,3 +1,4 @@
+import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -13,6 +14,7 @@ class EvacuationPage extends StatefulWidget {
 
 class _EvacuationPageState extends State<EvacuationPage> {
   VideoPlayerController? _controller;
+  late FlickManager flickManager;
   //Future<void>? _initializeVideoPlayerFuture;
 
   @override
@@ -26,10 +28,12 @@ class _EvacuationPageState extends State<EvacuationPage> {
             _controller?.setLooping(true);
             setState(() {});
           });
+    flickManager = FlickManager(videoPlayerController: _controller!);
   }
 
   @override
   void dispose() {
+    flickManager.dispose();
     _controller?.dispose();
     super.dispose();
   }
@@ -56,8 +60,15 @@ class _EvacuationPageState extends State<EvacuationPage> {
                   height: 20,
                 ),
                 SizedBox(
-                  child: VideoPlayer(
-                    _controller!,
+                  child: FlickVideoPlayer(
+                    flickVideoWithControls: FlickVideoWithControls(
+                      videoFit: BoxFit.fitHeight,
+                      controls: MediaQuery.of(context).orientation ==
+                              Orientation.portrait
+                          ? FlickPortraitControls()
+                          : FlickLandscapeControls(),
+                    ),
+                    flickManager: flickManager,
                   ),
                   height: MediaQuery.of(context).size.height - 200,
                 )
