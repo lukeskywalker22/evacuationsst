@@ -1,7 +1,6 @@
 import 'package:evacuationapp/routepage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 var locationimages = [];
 
@@ -9,7 +8,7 @@ GlobalKey<ScaffoldState> _key = GlobalKey();
 
 void main() {
   runApp(MaterialApp(
-    home: HomePage(),
+    home: const HomePage(),
     theme: ThemeData(),
     darkTheme: ThemeData.dark(),
   ));
@@ -55,6 +54,20 @@ class _HomePageState extends State<HomePage> {
     "mph.mov",
   ];
 
+  List<bool> showing = [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+
   List<String> filteredLocations = [];
 
   final TextEditingController _searchController = TextEditingController();
@@ -96,6 +109,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
@@ -140,13 +154,13 @@ Ethan Phua
           onPressed: () {
             _key.currentState?.openDrawer();
           },
-          icon: Icon(Icons.info),
+          icon: const Icon(Icons.info),
         ),
         /*title: Text(
           "EvacuationSST",
         ),
       ),*/
-        title: Column(
+        title: const Column(
           children: [
             Text(
               "EvacuationSST",
@@ -155,8 +169,11 @@ Ethan Phua
           ],
         ),
         bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(
+            50,
+          ),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
             child: TextField(
               controller: _searchController,
               style: const TextStyle(color: Colors.white),
@@ -168,14 +185,11 @@ Ethan Phua
               ),
             ),
           ),
-          preferredSize: Size.fromHeight(
-            50,
-          ),
         ),
       ),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(
+          padding: const EdgeInsets.all(
             20,
           ),
           child: Column(
@@ -188,7 +202,7 @@ Ethan Phua
                     : ListView.builder(
                         itemCount: filteredLocations.length,
                         itemBuilder: (context, index) {
-                          if (imageheaders[index] != "") {
+                          if (showing[index] == true) {
                             return Card(
                               child: InkWell(
                                 onTap: () {
@@ -204,7 +218,7 @@ Ethan Phua
                                   );
                                 },
                                 child: Padding(
-                                  padding: EdgeInsets.all(20),
+                                  padding: const EdgeInsets.all(20),
                                   child: Row(
                                     children: [
                                       ClipRRect(
@@ -223,7 +237,7 @@ Ethan Phua
                                       Flexible(
                                         child: Text(
                                           filteredLocations[index],
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 20,
                                           ),
                                         ),
@@ -234,7 +248,7 @@ Ethan Phua
                               ),
                             );
                           } else {
-                            return SizedBox(
+                            return const SizedBox(
                               height: 1,
                             );
                           }
