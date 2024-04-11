@@ -71,6 +71,7 @@ class _EvacuationPageState extends State<EvacuationPage> {
                     flickManager: flickManager,
                   ),
                   height: MediaQuery.of(context).size.height - 200,
+                  width: MediaQuery.of(context).size.width - 100,
                 )
                 /*FutureBuilder(
                 future: _initializeVideoPlayerFuture,
